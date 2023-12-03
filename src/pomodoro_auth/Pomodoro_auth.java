@@ -13,7 +13,8 @@ public class Pomodoro_auth {
         // Choose Opration
         System.out.println("1- Register");
         System.out.println("2- Login");
-        System.out.println("3- Exit");
+        System.out.println("3- Reset Password");
+        System.out.println("4- Exit");
 
         Scanner scanner = new Scanner(System.in);
         int option = scanner.nextInt();
@@ -22,7 +23,10 @@ public class Pomodoro_auth {
             Register.registerUser();
         } else if(option == 2) {
             Login.loginUser();
-        } else {
+        } else if(option == 3) {
+            Password.resetPassword();
+        }
+        else {
             scanner.close();
             System.exit(0);
         }
