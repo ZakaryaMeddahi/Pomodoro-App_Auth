@@ -14,7 +14,8 @@ public class Pomodoro_auth {
         System.out.println("1- Register");
         System.out.println("2- Login");
         System.out.println("3- Reset Password");
-        System.out.println("4- Exit");
+        System.out.println("4- Sync User Data");
+        System.out.println("5- Exit");
 
         Scanner scanner = new Scanner(System.in);
         int option = scanner.nextInt();
@@ -25,11 +26,11 @@ public class Pomodoro_auth {
             Login.loginUser();
         } else if(option == 3) {
             Password.resetPassword();
-        }
-        else {
+        } else if(option == 4) {
+            DB.syncUserData();
+        } else {
             scanner.close();
             System.exit(0);
         }
     }
-    
 }

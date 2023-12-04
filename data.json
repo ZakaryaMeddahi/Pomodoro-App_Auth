@@ -1,0 +1,23 @@
+{
+  "user": { "username": "Zakarya", "email": "zaki@gmail.com" },
+  "tasks": [
+    { "id": 1, "content": "Task 1", "status": "To Do", "tag": "Urgent" },
+    {
+      "id": 2,
+      "content": "Task 2",
+      "status": "To Do",
+      "tag": "Urgent",
+      "listName": "Project"
+    }
+  ],
+  "settings": {
+    "sessionDuration": 30,
+    "shortBreak": 5,
+    "longBreak": 15,
+    "shortBreakAfter": 2,
+    "autoStartBreak": true,
+    "autoStartPomodoro": true,
+    "autoStart": true,
+    "disableBreaks": false
+  }
+}
