@@ -59,14 +59,15 @@ public class DB {
     
     public static List<Task> getTasks() throws SQLException {
         List<Task> tasks = new ArrayList<>();
-        String query = "SELECT * FROM task WHERE 'user-id' = ?";
+        String query = "SELECT * FROM task WHERE userId = ?";
         
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             System.out.println(userId);
-            preparedStatement.setInt(1, 5);
+            preparedStatement.setInt(1, userId);
             ResultSet resultSet = preparedStatement.executeQuery();
             
+//            System.out.println(result);
             while (resultSet.next()) {
                 
                 int id = resultSet.getInt("id");
@@ -76,21 +77,22 @@ public class DB {
                 String status = resultSet.getString("status");
                 String tag = resultSet.getString("tag");
                 String listName = null;
-                int listId = resultSet.getInt("list-id");
+                int listId = resultSet.getInt("listId");
                 System.out.println(listId);
                 
-//                if(listId != 0) {
-//                    String getListQuery = "SELECT * FROM list WHERE id = ?";
-//                    PreparedStatement getListStatement = connection.prepareStatement(query);
-////                    getListStatement.setInt(1, listId);
-//                    System.out.println(listId);
-//                    ResultSet resSet = getListStatement.executeQuery();
-//                    
-//                    if(resSet.next()) {
-//                        listName = resSet.getString("title");
-//                    }
-//                    resSet.close();
-//                }
+                if(listId != 0) {
+                    String getListQuery = "SELECT * FROM list WHERE id = ?";
+                    PreparedStatement getListStatement = connection.prepareStatement(getListQuery);
+                    getListStatement.setInt(1, listId);
+                    System.out.println("List Id: " + listId);
+                    ResultSet resSet = getListStatement.executeQuery();
+                    
+                    if(resSet.next()) {
+                        System.out.println("Done");
+                        listName = resSet.getString("title");
+                    }
+                    resSet.close();
+                }
                 
                 tasks.add(new Task(id, content, status, tag, listName));
             }
