@@ -1,1 +1,1 @@
-Pomodoro App
+Pomodoro-App
